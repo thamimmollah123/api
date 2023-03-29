@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body onload="getUser()">
+     <div id="result"></div>
+     <img src="" alt=""id="profile">
+      <!-- jquery cdn -->
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    
+     <script>
+        function getUser(){
+          $.ajax({
+               url:"https://randomuser.me/api/",
+               method:"get",
+               data:{},
+               success:function(response){
+                    var jsondata=response.results;
+                    var name=jsondata[0].name.title+ " " +jsondata[0].name.first+jsondata[0].name.last;
+                document.getElementById("result").innerHTML=name;
+                document.getElementById("profile").src=jsondata[0].picture.medium;
+               }
+          })
+        }
+
+     </script>
+</body>
+</html>
